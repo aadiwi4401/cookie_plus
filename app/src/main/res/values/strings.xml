@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">cookie_plus</string>
+    <string name="start">Start Game</string>
 </resources>
