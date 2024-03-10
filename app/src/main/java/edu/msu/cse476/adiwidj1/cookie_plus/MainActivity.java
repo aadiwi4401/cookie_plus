@@ -20,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
                 openAboutPage();
             }
         });
+
+        Button quitButton = findViewById(R.id.buttonQuit);
+        quitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Close the activity and exit the application
+            }
+        });
     }
 
     public void openAboutPage() {
