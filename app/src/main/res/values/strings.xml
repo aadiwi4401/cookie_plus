@@ -2,7 +2,8 @@
     <string name="app_name">cookie_plus</string>
     <string name="start">Start Game</string>
     <string name="cookieClickerTitle">Cookie Clicker Title</string>
-    <string name="cookieClickerCounter">placeholder counter</string>
+    <string name="cookieCounterPlaceholderText">%s: %d</string>
+    <string name="cookieClickerCounter">Cookie Count</string>
     <string name="cookieContentDescription">Picture of Clickable Cookie</string>
     <string name="cookiePlaceholderText">Placeholder Cookie Button</string>
     <string name="backbutton">Back to Main Menu</string>
