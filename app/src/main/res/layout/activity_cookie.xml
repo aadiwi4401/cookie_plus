@@ -1,45 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cookieContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/minecraftworld"
     tools:context=".CookieActivity">
 
-    <TextView
-        android:id="@+id/cookieClickerTitle"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        android:text="@string/cookieClickerTitle" />
-
-    <TextView
-        android:id="@+id/cookieClickerCounter"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        android:text="@string/cookieClickerCounter" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/buttonCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="@string/cookiePlaceholderText" />
+        <TextView
+            android:id="@+id/cookieClickerTitle"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/semi_transparent_black"
+            android:gravity="center"
+            android:text="@string/cookieClickerTitle"
+            android:textColor="@android:color/white" />
 
+        <TextView
+            android:id="@+id/cookieClickerCounter"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/semi_transparent_black"
+            android:gravity="center"
+            android:text="@string/cookieClickerCounter"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/backbutton"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:onClick="goBackToMainMenu" />
+        <Button
+            android:id="@+id/buttonCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/semi_transparent_black"
+            android:text="@string/cookiePlaceholderText"
+            android:textColor="@android:color/white" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/semi_transparent_black"
+            android:textColor="@android:color/white"
+            android:text="@string/backbutton"
+            android:layout_margin="8dp"
+            android:onClick="goBackToMainMenu" />
+    </LinearLayout>
+
+</FrameLayout>
