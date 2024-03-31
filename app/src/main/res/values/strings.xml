@@ -6,6 +6,11 @@
     <string name="cookieClickerCounter">Cookie Count</string>
     <string name="cookieContentDescription">Picture of Clickable Cookie</string>
     <string name="cookiePlaceholderText">Placeholder Cookie Button</string>
-    <string name="backbutton">Back to Main Menu</string>
-
+    <string name="backButton">Back to Main Menu</string>
+    <string name="loginButton">Login</string>
+    <string name="signupButton">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="toSignup">To Sign Up</string>
+    <string name="toLogin">To Login</string>
 </resources>

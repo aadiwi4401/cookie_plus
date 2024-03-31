@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@color/semi_transparent_black"
             android:textColor="@android:color/white"
-            android:text="@string/backbutton"
+            android:text="@string/backButton"
             android:layout_margin="8dp"
             android:onClick="goBackToMainMenu" />
     </LinearLayout>

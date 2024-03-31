@@ -3,7 +3,6 @@ package edu.msu.cse476.adiwidj1.cookie_plus;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCookiePage();
+                openLoginPage();
             }
         });
 
@@ -46,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openCookiePage() {
         Intent intent = new Intent(this, CookieActivity.class);
+        startActivity(intent);
+    }
+
+    public void openLoginPage() {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }
