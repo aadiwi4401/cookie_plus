@@ -13,14 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button cookie = findViewById(R.id.buttonCookie);
-        cookie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startCookie();
-            }
-        });
-
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,11 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openLoginPage() {
         Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-
-    public void startCookie(){
-        Intent intent = new Intent(this, CookieActivity.class);
         startActivity(intent);
     }
 }
