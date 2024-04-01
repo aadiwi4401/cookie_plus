@@ -43,11 +43,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openCookiePage() {
-        Intent intent = new Intent(this, CookieActivity.class);
-        startActivity(intent);
-    }
-
     public void openLoginPage() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
