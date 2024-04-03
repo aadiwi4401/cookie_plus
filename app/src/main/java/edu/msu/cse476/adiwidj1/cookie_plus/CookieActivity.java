@@ -11,9 +11,20 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class CookieActivity extends AppCompatActivity {
@@ -31,6 +42,11 @@ public class CookieActivity extends AppCompatActivity {
 
     private float lastAcceleration = 0f;
 
+    private final SetOptions mergeOptions = SetOptions.merge();
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +57,13 @@ public class CookieActivity extends AppCompatActivity {
         counterTextView = findViewById(R.id.cookieClickerCounter);
         updateCounter();
 
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Objects.requireNonNull(sensorManager).registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
         currentAcceleration = SensorManager.GRAVITY_EARTH;
         lastAcceleration = SensorManager.GRAVITY_EARTH;
-
 
         buttonCounter.setOnClickListener(v -> {
             counter++;
@@ -104,6 +121,7 @@ public class CookieActivity extends AppCompatActivity {
     }
 
     public void goBackToMainMenu(View view) {
+        StoreUserClicks();
         finish();
     }
 
@@ -120,4 +138,32 @@ public class CookieActivity extends AppCompatActivity {
         sensorManager.unregisterListener(sensorListener);
         super.onPause();
     }
+
+    private void StoreUserClicks() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            Map<String, Object> userClicks = new HashMap<>();
+            userClicks.put("numCookiesClicked", counter);
+
+            db.collection("userData")
+                .document(userId)  // Use user's ID as document ID
+                .set(userClicks, mergeOptions)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(CookieActivity.this, "Successful", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CookieActivity.this, "Failed", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+        }
+    }
+
 }
