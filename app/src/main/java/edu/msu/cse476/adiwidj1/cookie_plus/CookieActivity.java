@@ -59,6 +59,8 @@ public class CookieActivity extends AppCompatActivity {
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        getUserClicks();
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Objects.requireNonNull(sensorManager).registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
@@ -114,6 +116,10 @@ public class CookieActivity extends AppCompatActivity {
 
 
     void updateCounter() {
+        if (counter >= 5000) {
+            Toast.makeText(CookieActivity.this, "You won!", Toast.LENGTH_SHORT).show();
+            counter = 0;
+        }
         String counterTextFormat = getString(R.string.cookieCounterPlaceholderText);
         String counterText = String.format(counterTextFormat, counter);
 
@@ -162,6 +168,28 @@ public class CookieActivity extends AppCompatActivity {
                         Toast.makeText(CookieActivity.this, "Failed", Toast.LENGTH_SHORT)
                                 .show();
                     }
+                });
+        }
+    }
+
+    private void getUserClicks() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            db.collection("userData")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Long numCookiesClicked = documentSnapshot.getLong("numCookiesClicked");
+                        if (numCookiesClicked != null) {
+                            counter = numCookiesClicked.intValue();
+                            updateCounter();
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(CookieActivity.this, "Failed to get user clicks", Toast.LENGTH_SHORT).show();
                 });
         }
     }
