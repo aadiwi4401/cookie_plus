@@ -68,41 +68,46 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //    private void loginUser() {
+//
+//        String email, password;
+//        email = emailTextView.getText().toString();
+//        password = passwordTextView.getText().toString();
+//
+//        if (TextUtils.isEmpty(email)) {
+//            Toast.makeText(getApplicationContext(),
+//                    "Please enter email", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//
+//        if (TextUtils.isEmpty(password)) {
+//            Toast.makeText(getApplicationContext(),
+//                    "Please enter password", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>()
+//                {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task)
+//                    {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Logged in", Toast.LENGTH_LONG).show();
+//                            openCookiePage();
+//                            finish();
+//                        }
+//                        else {
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Failed to log in", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
+//    }
+//}
     private void loginUser() {
-
-        String email, password;
-        email = emailTextView.getText().toString();
-        password = passwordTextView.getText().toString();
-
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter email", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter password", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),
-                                    "Logged in", Toast.LENGTH_LONG).show();
-                            openCookiePage();
-                            finish();
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(),
-                                    "Failed to log in", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+        openCookiePage();
+        finish();
     }
 }

@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -129,6 +130,25 @@ public class CookieActivity extends AppCompatActivity {
     public void goBackToMainMenu(View view) {
         StoreUserClicks();
         finish();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int touch = event.getActionMasked();
+        int touchCounter = event.getPointerCount();
+
+        switch(touch)
+        {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_POINTER_DOWN:
+                counter += touchCounter;
+                updateCounter();
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP:
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
