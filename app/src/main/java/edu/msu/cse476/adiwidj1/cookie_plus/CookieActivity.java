@@ -134,14 +134,15 @@ public class CookieActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int touch = event.getActionMasked();
-        int touchCounter = event.getPointerCount();
+        int action = event.getActionMasked();
 
-        switch(touch)
-        {
+        switch (action) {
             case MotionEvent.ACTION_DOWN:
+                counter++;
+                updateCounter();
+                break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                counter += touchCounter;
+                counter++;
                 updateCounter();
                 break;
             case MotionEvent.ACTION_UP:
@@ -150,6 +151,7 @@ public class CookieActivity extends AppCompatActivity {
         }
         return super.onTouchEvent(event);
     }
+
 
     @Override
     protected void onResume()
