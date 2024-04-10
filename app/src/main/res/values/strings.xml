@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">cookie_plus</string>
+    <string name="app_name">Created By Frederick Fan, David Xiong, Pranav Shukla, Marshal DiGiovanni, and Adrian Adiwijia </string>
     <string name="start">Start Game</string>
     <string name="cookieClickerTitle">Cookie Clicker Title</string>
     <string name="cookieCounterPlaceholderText">Cookie Count: %d</string>
