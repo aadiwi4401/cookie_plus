@@ -3,7 +3,6 @@ package edu.msu.cse476.adiwidj1.cookie_plus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,29 +31,16 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         Button loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser();
-            }
-        });
+        loginButton.setOnClickListener(v -> loginUser());
 
         Button switchToSignupButton = findViewById(R.id.switchToSignup);
-        switchToSignupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                openSignupPage();
-            }
+        switchToSignupButton.setOnClickListener(v -> {
+            finish();
+            openSignupPage();
         });
 
         Button backToMainMenuButton = findViewById(R.id.backToMainMenu);
-        backToMainMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Close the activity and exit the application
-            }
-        });
+        backToMainMenuButton.setOnClickListener(v -> finish());
     }
 
 
@@ -68,46 +54,40 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //    private void loginUser() {
-//
-//        String email, password;
-//        email = emailTextView.getText().toString();
-//        password = passwordTextView.getText().toString();
-//
-//        if (TextUtils.isEmpty(email)) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Please enter email", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-//
-//        if (TextUtils.isEmpty(password)) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Please enter password", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-//
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-//                {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task)
-//                    {
-//                        if (task.isSuccessful()) {
-//                            Toast.makeText(getApplicationContext(),
-//                                    "Logged in", Toast.LENGTH_LONG).show();
-//                            openCookiePage();
-//                            finish();
-//                        }
-//                        else {
-//                            Toast.makeText(getApplicationContext(),
-//                                    "Failed to log in", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
-//    }
-//}
     private void loginUser() {
-        openCookiePage();
-        finish();
+        String email, password;
+        email = emailTextView.getText().toString();
+        password = passwordTextView.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(),
+                "Please enter email", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter password", Toast.LENGTH_LONG).show();
+           return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(new OnCompleteListener<AuthResult>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
+                {
+                   if (task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(),
+                                "Logged in", Toast.LENGTH_LONG).show();
+                        openCookiePage();
+                        finish();
+                    }
+                    else {
+                       Toast.makeText(getApplicationContext(),
+                                "Failed to log in", Toast.LENGTH_LONG).show();
+                    }
+               }
+            });
     }
 }
