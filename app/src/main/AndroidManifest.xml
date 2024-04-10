@@ -16,6 +16,9 @@
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
+            android:name=".LeaderBoardsActivity"
+            android:exported="false" />
+        <activity
             android:name=".CookieActivity"
             android:exported="false" />
         <activity

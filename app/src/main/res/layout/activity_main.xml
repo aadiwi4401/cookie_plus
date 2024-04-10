@@ -38,17 +38,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Start"
-        app:layout_constraintBottom_toTopOf="@id/buttonCustomization"
+        app:layout_constraintBottom_toTopOf="@id/buttonLeadersBoard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
     <Button
-        android:id="@+id/buttonCustomization"
+        android:id="@+id/buttonLeadersBoard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Customization"
+        android:text="Leader Boards"
         app:layout_constraintBottom_toTopOf="@id/buttonAbout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonCustomization" />
+        app:layout_constraintTop_toBottomOf="@id/buttonLeadersBoard" />
 
     <Button
         android:id="@+id/buttonQuit"

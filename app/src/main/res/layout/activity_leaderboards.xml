@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".LeaderBoardsActivity">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="dummy"
+        android:id="@+id/firstPlace"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/firstPlaceLabel"
+        android:layout_toEndOf="@+id/firstPlaceLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="First: "
+        android:id="@+id/firstPlaceLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:gravity="end" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="dummy"
+        android:id="@+id/secondPlace"
+        android:layout_alignTop="@+id/secondPlaceLabel"
+        android:layout_toRightOf="@+id/secondPlaceLabel"
+        android:layout_toEndOf="@+id/secondPlaceLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Second"
+        android:id="@+id/secondPlaceLabel"
+        android:gravity="end"
+        android:layout_below="@+id/firstPlaceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="dummy"
+        android:id="@+id/thirdPlace"
+        android:layout_toRightOf="@+id/thirdPlaceLabel"
+        android:layout_toEndOf="@+id/thirdPlaceLabel"
+        android:layout_alignTop="@+id/thirdPlaceLabel"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Third: "
+        android:id="@+id/thirdPlaceLabel"
+        android:gravity="end"
+        android:layout_below="@+id/secondPlaceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="dummy"
+        android:id="@+id/fourthPlace"
+        android:layout_toRightOf="@+id/fourthPlaceLabel"
+        android:layout_toEndOf="@+id/fourthPlaceLabel"
+        android:layout_alignTop="@+id/fourthPlaceLabel"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fourth: "
+        android:id="@+id/fourthPlaceLabel"
+        android:gravity="end"
+        android:layout_below="@+id/thirdPlaceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="dummy"
+        android:id="@+id/fifthPlace"
+        android:layout_toRightOf="@+id/fifthPlaceLabel"
+        android:layout_toEndOf="@+id/fifthPlaceLabel"
+        android:layout_alignTop="@+id/fifthPlaceLabel"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fifth: "
+        android:id="@+id/fifthPlaceLabel"
+        android:gravity="end"
+        android:layout_below="@+id/fourthPlaceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backButton"
+        android:layout_below="@+id/fifthPlaceLabel"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:onClick="goBackToMainMenu" />
+
+</RelativeLayout>

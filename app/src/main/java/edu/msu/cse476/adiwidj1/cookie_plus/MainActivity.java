@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button leaderBoardsButton = findViewById(R.id.buttonLeadersBoard);
+        leaderBoardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { openLeaderboardsPage(); }
+
+
+        });
+
         Button aboutButton = findViewById(R.id.buttonAbout);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAboutPage() {
         Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    public void openLeaderboardsPage() {
+        Intent intent = new Intent(this, LeaderBoardsActivity.class);
         startActivity(intent);
     }
 

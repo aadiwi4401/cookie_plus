@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551947213618",
+    "project_id": "cookie-plus",
+    "storage_bucket": "cookie-plus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551947213618:android:a8dce5a0ccd9918385d52b",
+        "android_client_info": {
+          "package_name": "edu.msu.cse476.adiwidj1.cookie_plus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsifBdo01S-46Fm4-9F_xvmXQHuRFnOh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
