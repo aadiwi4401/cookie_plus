@@ -28,6 +28,9 @@
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
+            android:name=".ShopActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

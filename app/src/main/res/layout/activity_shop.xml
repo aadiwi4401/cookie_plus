@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#FFCCCC">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/shop"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/costPlus2Text"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/plus2Button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/plus2Text" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/costPlus3Text"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/plus3Button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/plus3Text" />
+
+    <Button
+        android:id="@+id/backToCookie"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/backToCookie" />
+</LinearLayout>

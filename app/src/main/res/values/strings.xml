@@ -13,4 +13,10 @@
     <string name="password">Password</string>
     <string name="toSignup">To Sign Up</string>
     <string name="toLogin">To Login</string>
+    <string name="shop">Shop</string>
+    <string name="plus2Text">Plus 2</string>
+    <string name="plus3Text">Plus 3</string>
+    <string name="costPlus2Text">Cost: 1500 Cookies</string>
+    <string name="costPlus3Text">Cost: 3000 Cookies</string>
+    <string name="backToCookie">Back to Clicking Cookies</string>
 </resources>

@@ -1,6 +1,7 @@
 package edu.msu.cse476.adiwidj1.cookie_plus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -56,6 +57,10 @@ public class CookieActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.cookieContainer);
         Button buttonCounter = findViewById(R.id.buttonCounter);
         counterTextView = findViewById(R.id.cookieClickerCounter);
+
+        // Receive extras from intent
+        int cookieModifier = getIntent().getIntExtra("cookieModifier", 0);
+
         updateCounter();
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,8 +73,29 @@ public class CookieActivity extends AppCompatActivity {
         currentAcceleration = SensorManager.GRAVITY_EARTH;
         lastAcceleration = SensorManager.GRAVITY_EARTH;
 
+        Button shopButton = findViewById(R.id.shopButton);
+        shopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StoreUserClicks();
+                openShopPage();
+                finish();
+            }
+        });
+
         buttonCounter.setOnClickListener(v -> {
-            counter++;
+            switch (cookieModifier) {
+                case 1:
+                    counter += 2;
+                    break;
+                case 2:
+                    counter += 3;
+                    break;
+                default:
+                    counter += 1;
+                    break;
+            }
+
             updateCounter();
             addCookieImageView();
         });
@@ -117,8 +143,9 @@ public class CookieActivity extends AppCompatActivity {
 
 
     void updateCounter() {
-        if (counter >= 5000) {
-            Toast.makeText(CookieActivity.this, "You won!", Toast.LENGTH_SHORT).show();
+        if (counter >= 100) {
+            Toast.makeText(CookieActivity.this, "You won!",
+                    Toast.LENGTH_SHORT).show();
             counter = 0;
         }
         String counterTextFormat = getString(R.string.cookieCounterPlaceholderText);
@@ -176,21 +203,7 @@ public class CookieActivity extends AppCompatActivity {
 
             db.collection("userData")
                 .document(userId)  // Use user's ID as document ID
-                .set(userClicks, mergeOptions)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(CookieActivity.this, "Successful", Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(CookieActivity.this, "Failed", Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                });
+                .set(userClicks, mergeOptions);
         }
     }
 
@@ -211,9 +224,15 @@ public class CookieActivity extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(CookieActivity.this, "Failed to get user clicks", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CookieActivity.this, "Failed to get user clicks",
+                            Toast.LENGTH_SHORT).show();
                 });
         }
+    }
+
+    public void openShopPage() {
+        Intent intent = new Intent(this, ShopActivity.class);
+        startActivity(intent);
     }
 
 }
