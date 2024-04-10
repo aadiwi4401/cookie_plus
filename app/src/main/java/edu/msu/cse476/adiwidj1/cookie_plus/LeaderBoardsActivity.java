@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 
 public class LeaderBoardsActivity extends AppCompatActivity {
 
@@ -36,8 +38,6 @@ public class LeaderBoardsActivity extends AppCompatActivity {
         TextView thirdPlace = (TextView) findViewById(R.id.thirdPlace);
         TextView fourthPlace = (TextView) findViewById(R.id.fourthPlace);
         TextView fifthPlace = (TextView) findViewById(R.id.fifthPlace);
-
-
 
 
         String first = "Adrian";

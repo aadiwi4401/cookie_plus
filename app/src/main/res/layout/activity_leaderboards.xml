@@ -8,6 +8,18 @@
     tools:context=".LeaderBoardsActivity">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leader Board"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/header"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -18,7 +30,7 @@
         android:layout_toEndOf="@+id/firstPlaceLabel"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:layout_width="100dp"
@@ -29,7 +41,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="100dp"
         android:gravity="end" />
 
     <TextView
@@ -53,6 +66,8 @@
         android:gravity="end"
         android:layout_below="@+id/firstPlaceLabel"
         android:layout_alignParentLeft="true"
+        android:layout_marginStart="100dp"
+
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -76,7 +91,10 @@
         android:gravity="end"
         android:layout_below="@+id/secondPlaceLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        />
+
 
     <TextView
         android:layout_width="200dp"
@@ -99,7 +117,9 @@
         android:gravity="end"
         android:layout_below="@+id/thirdPlaceLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        />
 
     <TextView
         android:layout_width="200dp"
@@ -122,7 +142,9 @@
         android:gravity="end"
         android:layout_below="@+id/fourthPlaceLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        />
 
     <Button
         android:id="@+id/backButton"
@@ -131,7 +153,7 @@
         android:text="@string/backButton"
         android:layout_below="@+id/fifthPlaceLabel"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="120dp"
         android:onClick="goBackToMainMenu" />
 
 </RelativeLayout>
