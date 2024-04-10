@@ -13,44 +13,60 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LeaderBoardsActivity extends AppCompatActivity {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    FirebaseAuth users = FirebaseAuth.getInstance();
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboards);
 
-        TextView firstPlace = (TextView) findViewById(R.id.firstPlace);
-        TextView secondPlace = (TextView) findViewById(R.id.secondPlace);
-        TextView thirdPlace = (TextView) findViewById(R.id.thirdPlace);
-        TextView fourthPlace = (TextView) findViewById(R.id.fourthPlace);
-        TextView fifthPlace = (TextView) findViewById(R.id.fifthPlace);
 
+        // Get a reference to the Firebase database
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("userData");
 
-        String first = "Adrian";
-        String second = "Marshal";
-        String third = "Pranav";
-        String fourth = "David";
-        String fifth = "Fred";
+        // Query to get top 5 users based on integer attribute
+        Query topUsersQuery = mDatabase.orderByChild("numCookiesClicked").limitToLast(5);
 
-        firstPlace.setText(first);
-        secondPlace.setText(second);
-        thirdPlace.setText(third);
-        fourthPlace.setText(fourth);
-        fifthPlace.setText(fifth);
+        topUsersQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Iterate through the top 5 users
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String userName = userSnapshot.child("userData").getValue(String.class);
+                    // Assuming you have TextView elements with ids "user1", "user2", ..., "user5"
+                    setUserNameToTextView(userName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
+    }
+
+    private void setUserNameToTextView(String userName) {
+        // Find corresponding TextView element and set its text
+        TextView textView = findViewById(getNextTextViewId());
+        textView.setText(userName);
+    }
+
+    // Helper method to get the id of the next TextView element to set the user name
+    private int nextTextViewId = R.id.user1;
+    private int getNextTextViewId() {
+        return nextTextViewId++;
     }
 
     public void goBackToMainMenu(View view) {
