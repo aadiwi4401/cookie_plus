@@ -19,4 +19,12 @@
     <string name="costPlus2Text">Cost: 1500 Cookies</string>
     <string name="costPlus3Text">Cost: 3000 Cookies</string>
     <string name="backToCookie">Back to Clicking Cookies</string>
+    <string name="leaderBoard">Leaderboard by Wins</string>
+    <string name="first">First:</string>
+    <string name="second">Second:</string>
+    <string name="third">Third:</string>
+    <string name="fourth">Fourth:</string>
+    <string name="fifth">Fifth:</string>
+    <string name="about">About</string>
+    <string name="quit">Quit</string>
 </resources>

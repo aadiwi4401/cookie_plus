@@ -4,69 +4,69 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.TextView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LeaderBoardsActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+    private FirebaseFirestore db;
+    private CollectionReference usersRef;
+
+    private TextView user1Text, user2Text, user3Text, user4Text, user5Text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboards);
 
+        db = FirebaseFirestore.getInstance();
+        usersRef = db.collection("userData");
 
-        // Get a reference to the Firebase database
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("userData");
+        user1Text = findViewById(R.id.user1);
+        user2Text = findViewById(R.id.user2);
+        user3Text = findViewById(R.id.user3);
+        user4Text = findViewById(R.id.user4);
+        user5Text = findViewById(R.id.user5);
 
-        // Query to get top 5 users based on integer attribute
-        Query topUsersQuery = mDatabase.orderByChild("numCookiesClicked").limitToLast(5);
+        loadTopUsers();
+    }
 
-        topUsersQuery.addValueEventListener(new ValueEventListener() {
+    private void loadTopUsers() {
+        Query topUsersQuery = usersRef.orderBy("userWins", Query.Direction.DESCENDING).limit(5);
+
+        topUsersQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Iterate through the top 5 users
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    String userName = userSnapshot.child("userData").getValue(String.class);
-                    // Assuming you have TextView elements with ids "user1", "user2", ..., "user5"
-                    setUserNameToTextView(userName);
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<String> topUserEmails = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String email = document.getString("userEmail");
+                        topUserEmails.add(email);
+                    }
+
+                    setTopUserEmails(topUserEmails);
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors
             }
         });
     }
 
-    private void setUserNameToTextView(String userName) {
-        // Find corresponding TextView element and set its text
-        TextView textView = findViewById(getNextTextViewId());
-        textView.setText(userName);
-    }
-
-    // Helper method to get the id of the next TextView element to set the user name
-    private int nextTextViewId = R.id.user1;
-    private int getNextTextViewId() {
-        return nextTextViewId++;
+    private void setTopUserEmails(List<String> topUserEmails) {
+        user1Text.setText(topUserEmails.size() > 0 ? topUserEmails.get(0) : "");
+        user2Text.setText(topUserEmails.size() > 1 ? topUserEmails.get(1) : "");
+        user3Text.setText(topUserEmails.size() > 2 ? topUserEmails.get(2) : "");
+        user4Text.setText(topUserEmails.size() > 3 ? topUserEmails.get(3) : "");
+        user5Text.setText(topUserEmails.size() > 4 ? topUserEmails.get(4) : "");
     }
 
     public void goBackToMainMenu(View view) {

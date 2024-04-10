@@ -29,6 +29,7 @@ import java.util.Objects;
 public class CookieActivity extends AppCompatActivity {
 
     private int counter = 0;
+    private int wins = 0;
     private TextView counterTextView;
     private FrameLayout frameLayout;
 
@@ -141,6 +142,7 @@ public class CookieActivity extends AppCompatActivity {
             Toast.makeText(CookieActivity.this, "You won!",
                     Toast.LENGTH_SHORT).show();
             counter = 0;
+            wins += 1;
         }
         String counterTextFormat = getString(R.string.cookieCounterPlaceholderText);
         String counterText = String.format(counterTextFormat, counter);
@@ -192,8 +194,13 @@ public class CookieActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
+            String userEmail = user.getEmail();
+
+            // Store user email and cookies clicked
             Map<String, Object> userClicks = new HashMap<>();
             userClicks.put("numCookiesClicked", counter);
+            userClicks.put("userEmail", userEmail);
+            userClicks.put("userWins", wins);
 
             db.collection("userData")
                 .document(userId)  // Use user's ID as document ID
@@ -211,9 +218,15 @@ public class CookieActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         Long numCookiesClicked = documentSnapshot.getLong("numCookiesClicked");
+                        Long userWins = documentSnapshot.getLong("userWins");
+
                         if (numCookiesClicked != null) {
                             counter = numCookiesClicked.intValue();
                             updateCounter();
+                        }
+
+                        if (userWins != null) {
+                            wins = userWins.intValue();
                         }
                     }
                 })
