@@ -71,13 +71,10 @@ public class CookieActivity extends AppCompatActivity {
         lastAcceleration = SensorManager.GRAVITY_EARTH;
 
         Button shopButton = findViewById(R.id.shopButton);
-        shopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StoreUserClicks();
-                openShopPage();
-                finish();
-            }
+        shopButton.setOnClickListener(v -> {
+            StoreUserClicks();
+            openShopPage();
+            finish();
         });
 
         buttonCounter.setOnClickListener(v -> {
