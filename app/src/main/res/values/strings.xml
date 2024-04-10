@@ -5,7 +5,7 @@
     <string name="cookieCounterPlaceholderText">Cookie Count: %d</string>
     <string name="cookieClickerCounter">Cookie Count</string>
     <string name="cookieContentDescription">Picture of Clickable Cookie</string>
-    <string name="cookiePlaceholderText">Placeholder Cookie Button</string>
+    <string name="cookiePlaceholderText">Add a Cookie!</string>
     <string name="backButton">Back to Main Menu</string>
     <string name="loginButton">Login</string>
     <string name="signupButton">Sign Up</string>
