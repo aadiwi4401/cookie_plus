@@ -27,4 +27,7 @@
     <string name="fifth">Fifth:</string>
     <string name="about">About</string>
     <string name="quit">Quit</string>
+    <string name="image">image</string>
+    <string name="contactinfo">CSE 476 Project - Spring 2024\n\nMarshal DiGiovanni\ndigiov26@msu.edu\n\nAdrian Adiwidjaja\nadiwidj1@msu.edu\n\nPranav Shukla\nshuklapr@msu.edu\n\nFrederick Fan\nfanfrede@msu.edu\n\nDavid Xiong\nxiongdav@msu.edu</string>
+    <string name="fifthstring">Fifth:</string>
 </resources>

@@ -106,7 +106,7 @@ public class CookieActivity extends AppCompatActivity {
             currentAcceleration = (float) Math.sqrt((x*x+y*y+z*z));
             float accelChange = currentAcceleration - lastAcceleration;
             acceleration = acceleration * 0.9f + accelChange;
-            if (acceleration > 12)
+            if (acceleration > 4)
             {
                 counter++;
                 updateCounter();

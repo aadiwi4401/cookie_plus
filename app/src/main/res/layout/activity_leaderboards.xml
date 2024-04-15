@@ -137,11 +137,10 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fifth: "
+        android:text="@string/fifthstring"
         android:id="@+id/fifthPlaceLabel"
         android:gravity="end"
         android:layout_below="@+id/fourthPlaceLabel"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="100dp"
         />

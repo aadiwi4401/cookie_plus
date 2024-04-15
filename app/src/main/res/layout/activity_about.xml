@@ -11,7 +11,7 @@
         android:id="@+id/aboutTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CSE 476 Project - Spring 2024\n\nMarshal DiGiovanni\ndigiov26@msu.edu\n\nAdrian Adiwidjaja\nadiwidj1@msu.edu\n\nPranav Shukla\nshuklapr@msu.edu\n\nFrederick Fan\nfanfrede@msu.edu\n\nDavid Xiong\nxiongdav@msu.edu"
+        android:text="@string/contactinfo"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
